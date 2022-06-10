@@ -6,7 +6,8 @@ public class Settings {
     public static int WEBAPI_PORT = 3000; //WEB POST/GET API SYSTEM
 
     /////CORE SETTINGS/////////////////
-    public static String G_Block_Hash = "08e8cf9e9e4da0b8cef55b50dae66fd210a5e2009afe0f36e66dcdc6262d4e08";
+    public static String G_Block_Hash = "08e8cf9e9e4da0b8cef55b50dae66fd210a5e2009afe0f36e66dcdc6262d4e08"; //This is the first block in the Blockchain
+
 
     //////////////////////////////////////////////////////////
     ///////FOR GUI INTERFACES////////////////////////////////
