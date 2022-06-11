@@ -192,7 +192,8 @@ public class StringUtil implements Serializable {
             case "SHA-256": return true;
             case "SHA-512": return true;
             case "MD5": return true;
-            case "GOST3411": return true;
+            case "MD4": return true;
+            case "MD2": return true;
         }
         return false;
     }

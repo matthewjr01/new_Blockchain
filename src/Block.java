@@ -33,7 +33,7 @@ public class Block implements Serializable{
 
         if(!StringUtil.IsAlgo(Algorithm)){
            System.out.println("ALOGRITHM IS NON-VALID");
-           return;
+           System.exit(1000);
         }
         this.Algorithm += Algorithm;
         this.Merkleroot = Calculate_MerkleRoot();
