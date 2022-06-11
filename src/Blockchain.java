@@ -42,7 +42,7 @@ public class Blockchain {
             }
 
             ///MODFY BLOCKS
-            for(int x = 0; x <= 10; x++) {
+            for(int x = 0; x <= 100; x++) {
                     Block block = Test_SubChain.get(x);
                     ArrayList<Transaction> transactions = new ArrayList<>();
                     transactions.addAll(block.transactions); //Adds all Transactions from the block and adds them to the temp array
@@ -57,14 +57,21 @@ public class Blockchain {
             int TimesPassed = 0;
             //CHECK BLOCKCHAIN
             for(Block block: Test_SubChain){
-                block.calculateBlockHash(Algorithm);
-                for(int x = 1; x <= 100; x++){
-                    if(!Test_SubChain.get(x).getPreviousHash().contains(block.getBlockHash())){
-                        System.out.println(Settings.YELLOW_BACKGROUND + Settings.RED + "BLOCK HASH MISS-MATCH ON: "+ block.getBlockHash()+ Settings.RESET);//EXPECTED TO RUN
-                        TimesPassed = TimesPassed +1;
-                        System.out.println(Settings.GREEN + "TEST PASSED: "+ TimesPassed);
-                    }
+                System.out.println(Settings.CYAN_BACKGROUND);
+                System.out.println(Settings.YELLOW + "Working on Block with Hash: "+ block.getBlockHash()+ Settings.RESET);
+                int CurrentBlockID = Test_SubChain.indexOf(block);
+                int MAXID = Test_SubChain.size();
+                String Newhash = block.calculateBlockHash(Algorithm);
+                if(!Test_SubChain.get(CurrentBlockID + 1).getPreviousHash().matches(Newhash)) {
+                    System.out.println(Settings.YELLOW_BACKGROUND + Settings.RED + "BLOCK HASH MISS-MATCH ON: " + block.getBlockHash() + Settings.RESET);//EXPECTED TO RUN
+                    System.out.println(Settings.GREEN + "TEST PASSED:  NEW HASH: "+ Newhash + " :"+ TimesPassed);
+                }else {
+                    System.out.println(Settings.RED + "TEST FAILED!!!: Recived HASH: "+ block.getBlockHash() + Settings.RESET);
+
                 }
+
+
+                System.out.println(Settings.RESET);
             }
             System.out.println(Settings.PURPLE + "TEST BLOCKCHAIN SIZE: "+ Test_SubChain.size() + Settings.RESET);
             Test_SubChain.clear();
@@ -72,6 +79,7 @@ public class Blockchain {
 
         }catch (Exception ex){
             System.out.println(ex); //Prints exception to console
+            return;
         }
     }
 
